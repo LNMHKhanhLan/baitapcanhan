@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fish Tank</title>
+  <link rel="stylesheet" href="hoca.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    /* Định dạng icon đĩa nhạc */
+    #music-icon {
+        font-size: 100px;
+        cursor: pointer;
+        color: #0e0f0f;
+        position: absolute; /* Định vị tuyệt đối */
+        top: 20px;          /* Cách cạnh trên 20px */
+        right: 20px;        /* Cách cạnh phải 20px */
+        z-index: 1000;
+    }
+</style>
+</head>
+<body>
+  <i id="music-icon" class="fa-solid fa-compact-disc"></i>
+
+  <audio id="background-music" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+
+
+  <div class="fish-tank">
+    <div class="nucfish fish"></div>
+    <div class="suafish fish"></div>
+    <div class="voifish fish"></div>
+    <div class="ruafish fish"></div>
+    <div class="tau fish"></div>
+    <div class="dorafish fish"></div>
+  </div>
+
+  <script src="hoca.js"></script>
+  <script>
+    const musicIcon = document.getElementById("music-icon");
+    const backgroundMusic = document.getElementById("background-music");
+
+    // Đặt trạng thái âm nhạc
+    let isPlaying = false;
+
+    // Thêm sự kiện click để bật/tắt nhạc
+    musicIcon.addEventListener("click", () => {
+        if (isPlaying) {
+            backgroundMusic.pause(); // Tắt nhạc
+            musicIcon.classList.remove("fa-compact-disc");
+            musicIcon.classList.add("fa-play-circle"); // Chuyển sang icon play
+        } else {
+            backgroundMusic.play(); // Bật nhạc
+            musicIcon.classList.remove("fa-play-circle");
+            musicIcon.classList.add("fa-compact-disc"); // Chuyển về icon đĩa nhạc
+        }
+        isPlaying = !isPlaying; // Đổi trạng thái
+    });
+</script>
+</body>
+</html>
